@@ -1,0 +1,25 @@
+syntax = "proto3";
+package A3;
+import "protos/inventory.proto";
+
+service InventoryService {
+    rpc CreateBook(Book) returns (createReply){}
+    rpc GetBook(getBookRequest) returns (getBookReply) {}
+}
+
+message createReply {
+    int32 code = 1;
+    string message = 2;
+}
+
+message getBookRequest {
+    string ISBN = 1;
+}
+
+message getBookReply {
+    int32 code = 1;
+    string message = 2;
+    Book book = 3;
+}
+
+// protoc --proto_path=../  --python_out=../service ../protos/InventoryService.proto
