@@ -22,4 +22,4 @@ message getBookReply {
     Book book = 3;
 }
 
-// protoc --proto_path=../  --python_out=../service ../protos/InventoryService.proto
+// python -m grpc_tools.protoc --proto_path=../  --python_out=. --pyi_out=. --grpc_python_out=../service ../protos/InventoryService.proto

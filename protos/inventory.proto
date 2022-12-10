@@ -1,16 +1,24 @@
 syntax = "proto3";
 package A3;
+
+enum Genre {
+    FICTION = 0;
+    MYSTERY = 1;
+    HISTORY = 2;
+    POETRY = 3;
+}
+
+enum Status {
+    AVAILABLE = 0;
+    TAKEN = 1;
+}
+
 message Book {
     string ISBN = 1;
     string title = 2;
     string author = 3;
-    enum Genre {
-        FICTION = 0;
-        MYSTERY = 1;
-        HISTORY = 2;
-        POETRY = 3;
-    }
-    int32 publishing_year = 4;
+    Genre genre = 4;
+    int32 publishing_year = 5;
 }
 
 message InventoryItem {
@@ -18,8 +26,5 @@ message InventoryItem {
     oneof item_type {
         Book book = 2;
     }
-    enum Status {
-        AVAILABLE = 0;
-        TAKEN = 1;
-    }
+    Status status = 3;
 }
