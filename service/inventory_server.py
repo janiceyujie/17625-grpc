@@ -15,7 +15,11 @@ class InventoryServiceServer(InventoryService_pb2_grpc.InventoryServiceServicer)
         }
 
     def CreateBook(self, request, context):
-
+        """
+            given the book details, create and store the book object.
+            Data is stored in a dictionary with the ISBN being the keys, 
+            and the book object being the values.
+        """
         isbn = request.ISBN
         title = request.title
         author = request.author
@@ -32,7 +36,10 @@ class InventoryServiceServer(InventoryService_pb2_grpc.InventoryServiceServicer)
         return InventoryService_pb2.createReply(code = 0, message = "Success")
 
     def GetBook(self, request, context):
-
+        
+        """
+            given the ISBN, return the book object
+        """
         isbn = request.ISBN
 
         if isbn not in self.books.keys():
